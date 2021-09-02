@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Gestão de Pessoas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <h1>GESTÃO DE PESSOAS</h1>
+
+    <div>
+        <form method="POST" th:object="${pessoa}" th:action="@{/pessoas}" style="margin: 20px 0">
+            <div>
+                <input type="text" placeholder="Nome" th:field="*{nome}" />
+                <input type="text" placeholder="Acompanhantes" th:field="*{quantPessoas}" />
+                <button type="submit">Adicionar</button>
+            </div>
+        </form>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Acompanhantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pessoa : ${lista}">
+                        <td th:text="${pessoa.nome}"></td>
+                        <td th:text="${pessoa.quantPessoas}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
